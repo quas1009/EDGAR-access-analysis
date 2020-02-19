@@ -17,12 +17,13 @@ import pickle
 from pyspark.sql.functions import expr
 
 class Streamer(object):
-    def __init__(self):
+    def __init__(self,conf):
         """
-    
+        spark streamer using structured streaming engine.
+        (input) conf: the configuration file for kafka, postgres, and spark streaming
         """
         config = ConfigParser()
-        config.read(object)
+        config.read(conf)
 
         self.kafka_config = {"TOPIC":config.get("KAFKA", "TOPIC"),
                      "BROKERS_IP":config.get("KAFKA", "BROKERS_IP")}
@@ -41,7 +42,10 @@ class Streamer(object):
             add("cik", T.StringType()).\
             add("code", T.StringType()) 
 
+        self.init_stream()
+        self.parse_stream()
 
+    @property
     def init_stream(self):
         """
         driver memory: 
@@ -64,7 +68,7 @@ class Streamer(object):
             config(conf=conf).\
             getOrCreate()
 
-        
+    @property    
     def parse_stream(self):
         """
         offset: default offset (structured streaming)
@@ -80,20 +84,28 @@ class Streamer(object):
           .selectExpr("CAST(value AS STRING)")
           .select(F.from_json("value", self.schema).alias("data"))
 
-        logs_df = (logs_json_df
-          .select(F.col("data.ip").alias("ip"),
+        self.logs_df = (logs_json_df
+        .select(F.col("data.ip").alias("ip"),
                   F.col("data.date").alias("date"),
                   F.col("data.cik").alias("cik"),
                   F.to_timestamp(F.col("data.time"), "HH:mm:ss").alias("time"),
                   F.col("data.code").cast("int").alias("code"))
         )
 
-    def psql_sink(data_frame, batch_id):
+    @property
+    def psql_sink(self, data_frame, batch_id):
+        """
+        the function sinks streaming data to postgreSQL by batch.
+        """
         data_frame.write\
 	     .option("numPartitions",1)\
 	     .jdbc(url=self.url, table="day1", mode="append",properties=self.prop)
 
+    @property
     def ip2long(self,ip):
+        """
+        the function 
+        """
         try:
             ip_list=ip.split('.')
             result=0
@@ -102,7 +114,8 @@ class Streamer(object):
             return f"{result:>010d}"
         except:
             return
-    
+
+    @property
     def binary_search(self,x,t):
         low = 0
         high = len(t)-1
@@ -116,20 +129,20 @@ class Streamer(object):
                 return mid
         return mid
         
-    def join(self):
+    def streaming(self):
         # define udf function
         file = open('iplist', 'rb')
         iplist = pickle.load(file)
         file.close()
 
         def get_pos(x):
-            ip_num = ip2long(x)
-            index = binary_search(ip_num, iplist)
+            ip_num = self.ip2long(x)
+            index = self.binary_search(ip_num, iplist)
             return index
         pos_udf=udf(get_pos,StringType())
 
         # Load static dataframe
-        df_bank = (spark.read.format("csv")
+        df_bank = (self.spark.read.format("csv")
             .option("header", "true")
             .load("bank.csv"))
         # df_bank.withColumn("cik",df_bank["cik"].cast(StringType()))
@@ -142,7 +155,7 @@ class Streamer(object):
                      )
 
 
-#     logs_watermarked_df = (logs_df
+#     logs_watermarked_df = (self.ogs_df
 #       .withWatermark("time", "20 seconds")
 #       .groupBy(F.col("ip"),
 #                F.window(F.col("time"), "20 seconds", "10 seconds"))
@@ -163,3 +176,5 @@ class Streamer(object):
 
 if __name__ == '__main__':
     streamer = Streamer('config/config.ini')
+    streamer.streaming()
+
