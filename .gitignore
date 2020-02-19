@@ -1,0 +1,10 @@
+# Keys and Configurations
+*.pem
+*.yml
+*.ini
+
+# Package Files
+*.zip
+*.tar.gz
+*.rar
+*.jar
