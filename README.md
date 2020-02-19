@@ -9,13 +9,15 @@ Website link: [dataengineer.cc] (http://dataengineer.cc/)
 ## Introduction
 
 *Real-time module:* The webapp displays where clicking activities are happening all over the world; high frequncy ip clicking activities and their frequencies.
-*Historical module:*
-Also, it analyzes the document accessed activities of each company from the EDGAR log files to heatmap the website users’ attention on the current primary business on the web app. A kafka->spark streaming pipeline is used to process tons of log file data. My product aims to give recommendations on which location should the company open a new branch. 
+
+*Historical module:* Heatmap of clicking activities across one week; company relational graph parsed out of clicking. 
 
 ![](./images/webapp.png)
-header and box style reference: Apache Echarts Plaftorm Template
+(header and box style reference: Apache Echarts Plaftorm Template)
 
 ## Pipeline
+
+This project replay EDGAR log file in real-time manner. Log messages are produced by Kafka and consumed by Spark Streaming. Static data is directly loaded into Spark Streaming, joining with streaming data. Streaming engine is structured streaming.
 ![](./images/pipeline.png)
 
 ## File Structure
@@ -82,3 +84,8 @@ export POSTGRESQL_DATABASE=XXXX
 export PYSPARK_PYTHON=XXXX
 export PYSPARK_DRIVER_PYTHON=XXXX
 ```
+
+## Running Geologation
+### Start streaming job
+### Start streaming with Kafka
+### Flask
