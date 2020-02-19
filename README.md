@@ -2,7 +2,7 @@
 > ***Real-time dashboard for log analysis***
 
 NY-20A Insight data engineering project.
-Website link: [dataengineer.cc] (http://dataengineer.cc/)
+Website link: [dataengineer.cc](http://dataengineer.cc/)
 
 ***
 
@@ -13,7 +13,11 @@ Website link: [dataengineer.cc] (http://dataengineer.cc/)
 *Historical module:* Heatmap of clicking activities across one week; company relational graph parsed out of clicking. 
 
 ![](./images/webapp.png)
-(header and box style reference: Apache Echarts Plaftorm Template)
+> *header and box style reference: Apache Echarts Plaftorm Template*
+
+## Data Sources
+Streaming: [EDGAR log](https://www.sec.gov/dera/data/edgar-log-file-data-set.html) treated as if it were real-time.
+Static: [GeoLite](https://lite.ip2location.com/ip2location-lite), [SEC-CIK-lookup](https://www.sec.gov/Archives/edgar/cik-lookup-data.txt)
 
 ## Pipeline
 
@@ -61,6 +65,10 @@ This project replay EDGAR log file in real-time manner. Log messages are produce
 
 ## Setup
 Install and configure [AWS CLI](https://aws.amazon.com/cli/) and [Pegasus](https://github.com/InsightDataScience/pegasus) on your local machine. Setup 4 `m4.large` EC2 instance and install awscli.
+
+- (3 nodes) Kafka cluster
+- (3 nodes) Stream
+- (1 node) Flask
 
 ```bash
 $ pip install awscli
