@@ -34,15 +34,20 @@ Website link: [dataengineer.cc] (http://dataengineer.cc/)
 ├── images
 │   ├── pipeline.png
 │   └── webapp.png
+|
 ├── kafka
 │   ├── kproducer.sh
 │   └── kproducer.py
+|
 ├── stream
 │   └── stream.py
+|
 ├── data
 |   ├── fetchdata.py
 |   ├── iplist
 |   └── sample.txt
+|
+├── requirements.txt
 └── sql_schema.txt
 ```
 
@@ -50,7 +55,6 @@ Website link: [dataengineer.cc] (http://dataengineer.cc/)
 Install and configure [AWS CLI](https://aws.amazon.com/cli/) and [Pegasus](https://github.com/InsightDataScience/pegasus) on your local machine. Setup 4 `m4.large` EC2 instance and install awscli.
 
 ```bash
-$ git clone https://github.com/tying21/foreign-movie-recommendation-tool.git
 $ pip install awscli
 ```
 Add the following credentials as environment variables to your `~/.bash_profile`.
