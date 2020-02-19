@@ -67,7 +67,7 @@ This project replay EDGAR log file in real-time manner. Log messages are produce
 └── sql_schema.txt
 ```
 
-## Setup
+## Environmental Setup
 Install and configure [AWS CLI](https://aws.amazon.com/cli/) and [Pegasus](https://github.com/InsightDataScience/pegasus) on your local machine. Setup 4 `m4.large` EC2 instance and install awscli.
 
 - (3 nodes) Kafka cluster
