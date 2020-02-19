@@ -10,7 +10,9 @@ Website link: [dataengineer.cc] (http://dataengineer.cc/)
 
 The webapp displays geo ip mapping and high frequncy ip clicking activities in realtime.
 Also, it analyzes the document accessed activities of each company from the EDGAR log files to heatmap the website users’ attention on the current primary business on the web app. A kafka->spark streaming pipeline is used to process tons of log file data. My product aims to give recommendations on which location should the company open a new branch. 
+
 ![](./images/webapp.png)
+header and box style reference: Apache Echarts Plaftorm Template
 
 ## Pipeline
 ![](./images/pipeline.png)
