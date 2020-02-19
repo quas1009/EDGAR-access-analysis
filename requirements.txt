@@ -1,0 +1,6 @@
+### Python 3.5.x ###
+boto3
+flask
+kafka-python
+lazyreader
+psycopg2-binary
