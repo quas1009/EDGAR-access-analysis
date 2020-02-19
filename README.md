@@ -8,16 +8,16 @@ Website link: [dataengineer.cc](http://dataengineer.cc/)
 
 ## Introduction
 
-*Real-time module:* The webapp displays where clicking activities are happening all over the world; high frequncy ip clicking activities and their frequencies.
+  1.*Real-time module:* The webapp displays where clicking activities are happening all over the world; high frequncy ip clicking activities and their frequencies.
 
-*Historical module:* Heatmap of clicking activities across one week; company relational graph parsed out of clicking. 
+  2. *Historical module:* Heatmap of clicking activities across one week; company relational graph parsed out of clicking. 
 
 ![](./images/webapp.png)
 > *header and box style reference: Apache Echarts Plaftorm Template*
 
 ## Data Sources
-Streaming: [EDGAR log](https://www.sec.gov/dera/data/edgar-log-file-data-set.html) treated as if it were real-time.
-Static: [GeoLite](https://lite.ip2location.com/ip2location-lite), [SEC-CIK-lookup](https://www.sec.gov/Archives/edgar/cik-lookup-data.txt)
+  1. Streaming: [EDGAR log](https://www.sec.gov/dera/data/edgar-log-file-data-set.html) treated as if it were real-time.
+  2. Static: [GeoLite](https://lite.ip2location.com/ip2location-lite), [SEC-CIK-lookup](https://www.sec.gov/Archives/edgar/cik-lookup-data.txt)
 
 ## Pipeline
 
