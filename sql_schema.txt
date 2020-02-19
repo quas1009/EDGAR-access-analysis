@@ -1,0 +1,122 @@
+DROP TABLE IF EXISTS iplist;
+Create table iplist(
+regoinid integer not null,
+lowerintip integer not null,
+upperintip integer not null,
+nation varchar(255),
+state varchar(255),
+city varchar(255),
+primary key(regionid)
+);
+
+
+DROP TABLE IF EXISTS branch;
+Create table users(
+bname varchar(255) not null,
+zip varchar(255),
+addr varchar(255),
+primary key(bname));
+
+
+
+DROP TABLE IF EXISTS days;
+Create table days(
+ip integer not null,
+start time not null,
+reqcount integer not null,
+code integer,
+regionid integer,
+primary key(ip,start),
+foreign key (regionid)
+references iplist (regionid)
+ON DELETE SET NULL 
+ON UPDATE SET NULL
+);
+
+
+
+
+DROP TABLE IF EXISTS weeks;
+Create table songs(
+ip integer not null,
+day integer not null,
+reqcount integer not null,
+code integer,
+regionid integer,
+primary key(ip,start),
+foreign key (regionid)
+references iplist (regionid)
+ON DELETE SET NULL 
+ON UPDATE SET NULL
+);
+
+
+
+DROP TABLE IF EXISTS bands;
+Create table bands(bandid integer,
+bandname varchar(255) not null,
+hometown varchar(225),
+region varchar(255),
+period varchar(255),
+artistid integer,
+primary key(bandid),
+foreign key (artistid)
+references artists (artistid)
+ON DELETE SET NULL
+ON UPDATE SET NULL);
+insert  into bands(bandname, hometown, period, region, artistid, bandid) values
+
+
+
+
+DROP TABLE IF EXISTS singers;
+create table singers(
+singerid integer not null,
+singername varchar(255) not null,
+home varchar(255),
+region varchar(255),
+period varchar(255),
+artistid integer,
+primary key(singerid),
+foreign key (artistid)
+references artists (artistid)
+ON DELETE SET NULL
+ON UPDATE SET NULL
+);
+insert into singers(singername, home, period, region, artistid, singerid) values 
+
+
+DROP TABLE IF EXISTS company;
+Create table company(
+cik varchar(255) not null,
+cname varchar(255) not null,
+rname varchar(255),
+cip varchar(255),
+primary key(cik));
+
+
+# create trigger to migrate days into weeks:
+create or replace function migrate_to_weeks() returns trigger as $weeks$
+begin
+   if (TG_OP = 'DELETE') then
+     insert into bandmember_audit select 'D',now(),user,old.*;
+     return old;
+   end if;
+   return null;
+end;
+$weeks$ language plpgsql;
+
+
+create trigger weeks 
+after delete on days
+for each row execute procedure migrate_to_week();
+
+
+
+
+
+
+
+
+
+
