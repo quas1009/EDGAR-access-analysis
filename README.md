@@ -8,7 +8,8 @@ Website link: [dataengineer.cc] (http://dataengineer.cc/)
 
 ## Introduction
 
-The webapp displays geo ip mapping and high frequncy ip clicking activities in realtime.
+*Real-time module:* The webapp displays where clicking activities are happening all over the world; high frequncy ip clicking activities and their frequencies.
+*Historical module:*
 Also, it analyzes the document accessed activities of each company from the EDGAR log files to heatmap the website users’ attention on the current primary business on the web app. A kafka->spark streaming pipeline is used to process tons of log file data. My product aims to give recommendations on which location should the company open a new branch. 
 
 ![](./images/webapp.png)
