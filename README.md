@@ -10,7 +10,7 @@ Website link: [dataengineer.cc](http://dataengineer.cc/)
 
   1.*Real-time module:* The webapp displays where clicking activities are happening all over the world; high frequncy ip clicking activities and their frequencies.
 
-  2. *Historical module:* Heatmap of clicking activities across one week; company relational graph parsed out of clicking. 
+  2.*Historical module:* Heatmap of clicking activities across one week; company relational graph parsed out of clicking. 
 
 ![](./images/webapp.png)
 > *header and box style reference: Apache Echarts Plaftorm Template*
