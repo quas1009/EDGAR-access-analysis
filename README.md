@@ -100,14 +100,21 @@ export PYSPARK_DRIVER_PYTHON=XXXX
 ## Running Geologation
 ### Start streaming job
 `spark-submit --packages org.apache.spark:spark-streaming-kafka-0-10_2.11:2.4.0,org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.0 \
+
               --master spark://$BATCH_CLUSTER:7077 stream.py`
 ### Start streaming with Kafka
 create topic
+
 `/usr/local/kafka/bin/kafka-topics.sh --create --zookeeper $ZK_IP \
+
                                       --topic $TOPIC \
+                                      
                                       --partitions $NUM_PARTITIONS \
+                                      
                                       --replication-factor $REPL_FACTOR`
+                                      
 run bash file
+
 `bash kafka/kproducer.sh $NUM_PARTITIONS $TMUX_SESSION`
 ### Flask
-`python server.py`
+`python3 server.py`
