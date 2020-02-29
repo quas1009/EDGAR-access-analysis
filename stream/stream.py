@@ -104,7 +104,7 @@ class Streamer(object):
     @property
     def ip2long(self,ip):
         """
-        the function 
+        the function to convert 32-bit ip to long integer.
         """
         try:
             ip_list=ip.split('.')
@@ -154,15 +154,15 @@ class Streamer(object):
                       .select(F.col("ip"), F.col("cik"), F.col("window.start").alias("start"), F.col("req_count"), pos_udf(F.col("ip")).alias("region"))
                      )
 
-
-#     logs_watermarked_df = (self.ogs_df
-#       .withWatermark("time", "20 seconds")
-#       .groupBy(F.col("ip"),
-#                F.window(F.col("time"), "20 seconds", "10 seconds"))
-#       .agg(F.count('code').alias('req_count'),
-#            F.count('crawl').alias('cra_count'))
-#       .select(F.col("ip").alias("suspicious_ip")))
-#    suspicious_ip_df = logs_wm_df.filter("req_count > 1000")
+        # # Filter suspicious IP
+        # logs_watermarked_df = (self.ogs_df
+        # .withWatermark("time", "20 seconds")
+        # .groupBy(F.col("ip"),
+        #         F.window(F.col("time"), "20 seconds", "10 seconds"))
+        # .agg(F.count('code').alias('req_count'),
+        #     F.count('crawl').alias('cra_count'))
+        # .select(F.col("ip").alias("suspicious_ip")))
+        # suspicious_ip_df = logs_wm_df.filter("req_count > 1000")
     
         print("Start Streaming")
         file_output_stream = (logs_wm_df

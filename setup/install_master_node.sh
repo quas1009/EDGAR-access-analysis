@@ -1,9 +1,5 @@
 #!/bin/bash
 
-output=""
-
-dest=/home/ubuntu/.profile
-
 CLUSTER_NAME=spark-cluster
 
 peg sshcmd-cluster ${CLUSTER_NAME} "sudo apt-get install bc"
