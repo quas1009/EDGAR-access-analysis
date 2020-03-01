@@ -6,5 +6,5 @@ for ID in `seq 1 $NUM_SPAWNS`;
 do
     echo $ID
     tmux new-window -t $ID
-    tmux send-keys -t $SESSION:$ID 'python kproducer.py '"$ID"'' C-m
+    tmux send-keys -t $SESSION:$ID 'python kafka/kproducer.py '"$ID"'' C-m
 done
