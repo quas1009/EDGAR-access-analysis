@@ -56,7 +56,8 @@ This project replay EDGAR log file in real-time manner. Log messages are produce
 │   └── kproducer.py
 |
 ├── stream
-│   └── stream.py
+│   ├── stream.py
+│   └── stream_1.0.py
 |
 ├── data
 |   ├── fetchdata.py
@@ -99,8 +100,12 @@ export PYSPARK_DRIVER_PYTHON=XXXX
 
 ## Running Geologation
 ### Start streaming job
+#### Option1: Structured Streaming:
 `spark-submit --packages org.apache.spark:spark-streaming-kafka-0-10_2.11:2.4.0,org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.0 \
               --master spark://$BATCH_CLUSTER:7077 stream.py`
+#### Option2: D-Streaming:
+`spark-submit --packages org.apache.spark:spark-streaming-kafka-0-10_2.11:2.4.0,org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.0 \
+              --master spark://$BATCH_CLUSTER:7077 stream_1.0.py`
 ### Start streaming with Kafka
 create topic
 
