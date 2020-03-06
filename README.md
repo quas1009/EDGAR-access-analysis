@@ -120,4 +120,5 @@ run bash file
 ### Flask
 `python3 server.py`
 
-### Batch Module is updating ... (ง •̀_•́)ง (*•̀ㅂ•́)و
+## Batch Module is updating ... (ง •̀_•́)ง (*•̀ㅂ•́)و
+New feature: Kmeans
