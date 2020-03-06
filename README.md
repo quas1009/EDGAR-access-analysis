@@ -119,3 +119,5 @@ run bash file
 `bash kafka/kproducer.sh $NUM_PARTITIONS $TMUX_SESSION`
 ### Flask
 `python3 server.py`
+
+### Batch Module is updating ... (ง •̀_•́)ง (*•̀ㅂ•́)و
