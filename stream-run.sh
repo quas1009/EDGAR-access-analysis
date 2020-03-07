@@ -3,4 +3,4 @@ spark-submit --master spark://$SPARK_CLUSTER:7077 \
              --jars $PWD/postgresql-42.2.9.jar \
              --driver-memory 4G \
              --executor-memory 4G \
-             streaming/stream.py
+             streaming/streamer.py
