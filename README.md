@@ -16,7 +16,7 @@ Website link: [dataengineer.cc](http://dataengineer.cc/)
  - Heatmap of clicking activities across one week (middle right); 
  - company relational graph parsed out of clicking (upper right). 
 
-![](https://imglf5.lf127.net/img/d3lrekk3clNXbkRlYlF6TUZFT0R1YkJBNmtkQk5FWFpmaGlLY1Q5NU90M2Fud2I5OVdqcGpnPT0.png)
+![](.images/webapp.png)
 > *header and box style reference: Apache Echarts Plaftorm Template*
 
 ## Data Sources
