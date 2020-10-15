@@ -16,7 +16,7 @@ Website link: [dataengineer.cc](http://dataengineer.cc/)
  - Heatmap of clicking activities across one week (middle right); 
  - company relational graph parsed out of clicking (upper right). 
 
-![](https://imglf5.lf127.net/img/d3lrekk3clNXbkRlYlF6TUZFT0R1YkJBNmtkQk5FWFpmaGlLY1Q5NU90M2Fud2I5OVdqcGpnPT0.png)
+![](https://imglf5.lf127.net/img/d3lrekk3clNXbkRlYlF6TUZFT0R1UUtvVWh0Y1E1cm1lenlnL3p5aGo5clpHd3QzTER2WDl3PT0.png)
 > *header and box style reference: Apache Echarts Plaftorm Template*
 
 ## Data Sources
@@ -26,7 +26,7 @@ Website link: [dataengineer.cc](http://dataengineer.cc/)
 ## Pipeline
 
 This project replay EDGAR log file in real-time manner. Log messages are produced by Kafka and consumed by Spark Streaming. Static data is directly loaded into Spark Streaming, joining with streaming data. Streaming engine is structured streaming.
-![](./images/pipeline.png)
+![](https://imglf4.lf127.net/img/d3lrekk3clNXbkRlYlF6TUZFT0R1UUpGamFWT3RvTm9VNG9tcm1MblBEMkpwY2JENWp1VXlnPT0.png?imageView&thumbnail=1790y615&type=png&quality=96&stripmeta=0)
 
 ## File Structure
 ```
